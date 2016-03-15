@@ -160,6 +160,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jBtnComa.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jBtnComa.setText(",");
         jBtnComa.setFocusable(false);
+        jBtnComa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnComaActionPerformed(evt);
+            }
+        });
 
         jBtnMas.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jBtnMas.setText("+");
@@ -464,6 +469,10 @@ public class NewJFrame extends javax.swing.JFrame {
         Display1.setText(Display1.getText()+"9");
         cerodisplay = true;
     }//GEN-LAST:event_jBtn9ActionPerformed
+
+    private void jBtnComaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnComaActionPerformed
 
     /**
      * @param args the command line arguments
