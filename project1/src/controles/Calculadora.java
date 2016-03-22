@@ -5,10 +5,23 @@
  */
 package controles;
 
+import javafx.event.ActionEvent;
+
 /**
  *
  * @author treznor
  */
 public class Calculadora {
     
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==jBtn1) {
+            System.exit(0);
+        }
+    }
+    
+        
+      
+    
+    
+ 
 }
