@@ -5,7 +5,8 @@
  */
 package project1;
 
-import grafico.JFrameCalc;
+
+import grafico.Calc1;
 import javax.swing.JFrame;
 
 
@@ -20,9 +21,10 @@ public class Project1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrameCalc jFrameCalc = new JFrameCalc();
-        jFrameCalc.setLocationRelativeTo(null);
-        jFrameCalc.setVisible(true);
-     
+
+        Calc1 Calc = new Calc1();
+        Calc.setVisible(true);
+        
+    
 }
 }
