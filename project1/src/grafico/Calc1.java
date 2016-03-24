@@ -22,7 +22,8 @@ public class Calc1 extends javax.swing.JFrame {
     int MenosClick;
     int MultiplicacionClick;
     int DividirClick;
-    
+    int DecimalesClick;
+    float porcentaje;
     
     
     
@@ -76,6 +77,7 @@ public class Calc1 extends javax.swing.JFrame {
         jBtnMulti = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculadora Java");
         setPreferredSize(new java.awt.Dimension(375, 400));
 
         jBtn2.setText("2");
@@ -249,6 +251,11 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButtonporcen.setText("%");
         jButtonporcen.setFocusable(false);
+        jButtonporcen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonporcenActionPerformed(evt);
+            }
+        });
 
         jButtonmod.setText("mod");
         jButtonmod.setFocusable(false);
@@ -272,13 +279,9 @@ public class Calc1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
@@ -332,6 +335,8 @@ public class Calc1 extends javax.swing.JFrame {
                             .addComponent(jButtonMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBtnMulti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
                     .addComponent(jTxFMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
@@ -339,11 +344,11 @@ public class Calc1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTxFMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton19)
@@ -359,7 +364,7 @@ public class Calc1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonLimpiar2)
-                        .addComponent(jButtonDividir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonDividir))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonLimpiar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonBorrarNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -375,11 +380,10 @@ public class Calc1 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBtnDecimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jBtnDecimal))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButtonIgual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(92, 92, 92))
+                                .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -391,13 +395,14 @@ public class Calc1 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtn1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jBtn3)
                                     .addComponent(jButtonMas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(75, 75, 75))
         );
 
         pack();
@@ -456,18 +461,22 @@ public class Calc1 extends javax.swing.JFrame {
 
     private void jTxFMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxFMostrarActionPerformed
         // TODO add your handling code here:
-       String [] Numero ;
-       
     }//GEN-LAST:event_jTxFMostrarActionPerformed
 
     private void jButtonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiar1ActionPerformed
         // TODO add your handling code here:
         jTxFMostrar.setText(""); // Limpia el jTxFMostrar
+        DecimalesClick = 0;
+        
     }//GEN-LAST:event_jButtonLimpiar1ActionPerformed
 
     private void jBtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDecimalActionPerformed
         // TODO add your handling code here:
+       
+        if(DecimalesClick==0){  // if que limita que solo se ponga una vez el punto de decimal 
         jTxFMostrar.setText(jTxFMostrar.getText() + jBtnDecimal.getText()); //Coloca el Valor del boton en el jTxFMostrar
+        DecimalesClick = 1;
+        }
     }//GEN-LAST:event_jBtnDecimalActionPerformed
 
     private void jBtnMasMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasMenosActionPerformed
@@ -482,7 +491,7 @@ public class Calc1 extends javax.swing.JFrame {
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
         jTxFMostrar.setText((""));
         MasClick = 1;
-        
+        DecimalesClick=0;
         
     }//GEN-LAST:event_jButtonMasActionPerformed
 
@@ -491,6 +500,7 @@ public class Calc1 extends javax.swing.JFrame {
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
         jTxFMostrar.setText((""));
         MenosClick = 1;
+        DecimalesClick=0;
     }//GEN-LAST:event_jButtonMenosActionPerformed
 
     private void jBtnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMultiActionPerformed
@@ -498,6 +508,7 @@ public class Calc1 extends javax.swing.JFrame {
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
         jTxFMostrar.setText((""));
         MultiplicacionClick = 1;
+        DecimalesClick=0;
     }//GEN-LAST:event_jBtnMultiActionPerformed
 
     private void jButtonDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDividirActionPerformed
@@ -505,7 +516,7 @@ public class Calc1 extends javax.swing.JFrame {
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
         jTxFMostrar.setText((""));
         DividirClick = 1;
-        
+        DecimalesClick=0;
     }//GEN-LAST:event_jButtonDividirActionPerformed
 
     private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
@@ -541,12 +552,29 @@ public class Calc1 extends javax.swing.JFrame {
             SegundoDouble = 0;
             DividirClick = 0;
            }
+
     }//GEN-LAST:event_jButtonIgualActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0); // Sale de la aplicacion 
     }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonporcenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonporcenActionPerformed
+        // TODO add your handling code here:
+        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+        jTxFMostrar.setText((""));
+        porcentaje = 1;   
+
+            if(porcentaje > 0 ){
+            Total = SegundoDouble * 100 / PrimerDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            porcentaje = 0;
+        
+            }
+    }//GEN-LAST:event_jButtonporcenActionPerformed
 
     /**
      * @param args the command line arguments
