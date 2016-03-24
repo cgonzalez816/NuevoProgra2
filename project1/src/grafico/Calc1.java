@@ -150,9 +150,19 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButtonIgual.setText("=");
         jButtonIgual.setFocusable(false);
+        jButtonIgual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIgualActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
         jButtonSalir.setFocusable(false);
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("jLabel1");
 
@@ -378,7 +388,7 @@ public class Calc1 extends javax.swing.JFrame {
                             .addComponent(jBtn6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtn1)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -497,6 +507,46 @@ public class Calc1 extends javax.swing.JFrame {
         DividirClick = 1;
         
     }//GEN-LAST:event_jButtonDividirActionPerformed
+
+    private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
+        // TODO add your handling code here:
+        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+        if(MasClick > 0 ){
+            Total = PrimerDouble + SegundoDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MasClick = 0;
+        }
+         if(MenosClick > 0 ){
+            Total = PrimerDouble - SegundoDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MenosClick = 0;
+         }
+          
+          if(MultiplicacionClick > 0 ){
+            Total = PrimerDouble * SegundoDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MultiplicacionClick = 0;
+          } 
+          
+           if(DividirClick > 0 ){
+            Total = PrimerDouble / SegundoDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            DividirClick = 0;
+           }
+    }//GEN-LAST:event_jButtonIgualActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0); // Sale de la aplicacion 
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
