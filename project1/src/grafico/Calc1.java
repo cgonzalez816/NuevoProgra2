@@ -23,7 +23,9 @@ public class Calc1 extends javax.swing.JFrame {
     int MultiplicacionClick;
     int DividirClick;
     int DecimalesClick;
-    float porcentaje;
+    double porcentaje;
+    
+    int memoria [];
     
     
     
@@ -254,6 +256,11 @@ public class Calc1 extends javax.swing.JFrame {
         jButtonporcen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonporcenActionPerformed(evt);
+            }
+        });
+        jButtonporcen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonporcenKeyPressed(evt);
             }
         });
 
@@ -562,19 +569,17 @@ public class Calc1 extends javax.swing.JFrame {
 
     private void jButtonporcenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonporcenActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        jTxFMostrar.setText((""));
-        porcentaje = 1;   
-
-            if(porcentaje > 0 ){
-            Total = SegundoDouble * 100 / PrimerDouble;
+         
+         
+         PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+         SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+            Total = (PrimerDouble / 100 * PrimerDouble);
             jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
-            SegundoDouble = 0;
-            porcentaje = 0;
-        
-            }
     }//GEN-LAST:event_jButtonporcenActionPerformed
+
+    private void jButtonporcenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonporcenKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonporcenKeyPressed
 
     /**
      * @param args the command line arguments
