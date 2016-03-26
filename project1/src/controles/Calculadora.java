@@ -7,7 +7,7 @@ package controles;
 
 /**
  *
- * @author treznor
+ * @author Cesar Gonzalez
  */
 public class Calculadora {
     

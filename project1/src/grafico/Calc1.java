@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,28 +8,23 @@ package grafico;
 import java.awt.event.ActionListener;
 /**
  *
- * @author treznor
+ * @author Cesar Gonzalez
  */
 public class Calc1 extends javax.swing.JFrame {
 
-    //Variables 
-    double Masmenos; // Variable para el punto de los decimales
-    double PrimerDouble; // Para el la acccion del mas 
-    double SegundoDouble; //
-    double Total;
-    //Para verificar los clicks de las variables
-    int MasClick;    
-    int MenosClick;
-    int MultiplicacionClick;
-    int DividirClick;
-    int DecimalesClick;
-    double porcentaje;
-    
-    int memoria [];
-    
-    
-    
-    
+    //Declaracion de las variables 
+    double Masmenos;         // Variable para el punto de los decimales
+    double PrimerDouble;     // Variable que guarda el primer valor 
+    double SegundoDouble;    // Variable que guarda el segundo valor 
+    double Total;            // Variable que guarda el total de las operaciones   
+    //Variables Para verificar los clicks de los botones
+    int MasClick;            // Boton mas 
+    int MenosClick;          //Botton menos
+    int MultiplicacionClick; //Botton Multiplicacion 
+    int DividirClick;        // Botton Dividir
+    int DecimalesClick;      //Boton para los decimales
+    double porcentaje;       //boton para el porcentaje
+    int memoria [];          //lista para las memorias
     /**
      * Creates new form Calc1
      */
@@ -400,21 +395,20 @@ public class Calc1 extends javax.swing.JFrame {
                             .addComponent(jButtonMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBtn1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBtn3)
-                                    .addComponent(jButtonMas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jBtn1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBtn3)
+                                .addComponent(jButtonMas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(75, 75, 75))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ *
+ * Botones y codigo para colocar los valores en el Jtex
+ */
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
         // TODO add your handling code here:
         jTxFMostrar.setText(jTxFMostrar.getText() + jButton0.getText()); //Coloca el Valor del boton en el jTxFMostrar
@@ -474,31 +468,32 @@ public class Calc1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTxFMostrar.setText(""); // Limpia el jTxFMostrar
         DecimalesClick = 0;
-        
     }//GEN-LAST:event_jButtonLimpiar1ActionPerformed
-
+/**
+ *
+ * Botones y codigo para las operaciones basicas
+ */
     private void jBtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDecimalActionPerformed
         // TODO add your handling code here:
-       
-        if(DecimalesClick==0){  // if que limita que solo se ponga una vez el punto de decimal 
+       if(DecimalesClick==0){  // if que limita que solo se ponga una vez el punto de decimal 
         jTxFMostrar.setText(jTxFMostrar.getText() + jBtnDecimal.getText()); //Coloca el Valor del boton en el jTxFMostrar
-        DecimalesClick = 1;
+        DecimalesClick = 1;   // si Decimal click = 1 , no permite mas puntos 
         }
     }//GEN-LAST:event_jBtnDecimalActionPerformed
 
     private void jBtnMasMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasMenosActionPerformed
         // TODO add your handling code here:
-        Masmenos = (Double.parseDouble(String.valueOf(jTxFMostrar))  );//muestra el punto de los decimales 
-        Masmenos = Masmenos*(-1);
-        jTxFMostrar.setText(String.valueOf(Masmenos));
+        Masmenos = (Double.parseDouble(String.valueOf(jTxFMostrar))  );//muestra el signo negativo 
+        Masmenos = Masmenos*(-1);       // Multiplica lo que esta en la variable por -1 para cambiarle el signo
+        jTxFMostrar.setText(String.valueOf(Masmenos));  // muestra el valor 
     }//GEN-LAST:event_jBtnMasMenosActionPerformed
 
     private void jButtonMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        jTxFMostrar.setText((""));
-        MasClick = 1;
-        DecimalesClick=0;
+        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        jTxFMostrar.setText((""));    // limpia el texto
+        MasClick = 1;  // se usa para pasar al otro texto
+        DecimalesClick=0; //limpia los decimales 
         
     }//GEN-LAST:event_jButtonMasActionPerformed
 
@@ -550,6 +545,7 @@ public class Calc1 extends javax.swing.JFrame {
             PrimerDouble = 0;
             SegundoDouble = 0;
             MultiplicacionClick = 0;
+            
           } 
           
            if(DividirClick > 0 ){
@@ -559,7 +555,7 @@ public class Calc1 extends javax.swing.JFrame {
             SegundoDouble = 0;
             DividirClick = 0;
            }
-
+            
     }//GEN-LAST:event_jButtonIgualActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
@@ -569,12 +565,38 @@ public class Calc1 extends javax.swing.JFrame {
 
     private void jButtonporcenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonporcenActionPerformed
         // TODO add your handling code here:
-         
-         
-         PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-         SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-            Total = (PrimerDouble / 100 * PrimerDouble);
+        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+        if(MasClick > 0 ){
+            Total = PrimerDouble + (PrimerDouble * SegundoDouble / 100);
             jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MasClick = 0;
+        }
+         if(MenosClick > 0 ){
+            Total = PrimerDouble - (PrimerDouble * SegundoDouble / 100);
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MenosClick = 0;
+         }
+          
+          if(MultiplicacionClick > 0 ){
+            Total = PrimerDouble / 100 * SegundoDouble;
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            MultiplicacionClick = 0;
+            
+          } 
+          
+           if(DividirClick > 0 ){
+            Total = PrimerDouble / (PrimerDouble / 100 * SegundoDouble);
+            jTxFMostrar.setText((String.valueOf(Total)));
+            PrimerDouble = 0;
+            SegundoDouble = 0;
+            DividirClick = 0;
+           }
     }//GEN-LAST:event_jButtonporcenActionPerformed
 
     private void jButtonporcenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonporcenKeyPressed

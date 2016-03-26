@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author treznor
+ * @author Cesar Gonzalez
  */
 public class Project1 {
 
