@@ -582,8 +582,9 @@ public class Calc1 extends javax.swing.JFrame {
          }
           
           if(MultiplicacionClick > 0 ){
-            Total = PrimerDouble / 100 * SegundoDouble;
-            jTxFMostrar.setText((String.valueOf(Total)));
+            Total = PrimerDouble * SegundoDouble;
+            porcentaje = Total /100;
+            jTxFMostrar.setText((String.valueOf(porcentaje)));
             PrimerDouble = 0;
             SegundoDouble = 0;
             MultiplicacionClick = 0;
@@ -591,7 +592,7 @@ public class Calc1 extends javax.swing.JFrame {
           } 
           
            if(DividirClick > 0 ){
-            Total = PrimerDouble / (PrimerDouble / 100 * SegundoDouble);
+            Total = PrimerDouble / (PrimerDouble * SegundoDouble / 100);
             jTxFMostrar.setText((String.valueOf(Total)));
             PrimerDouble = 0;
             SegundoDouble = 0;
