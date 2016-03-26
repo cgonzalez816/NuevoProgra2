@@ -499,59 +499,62 @@ public class Calc1 extends javax.swing.JFrame {
 
     private void jButtonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenosActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        jTxFMostrar.setText((""));
-        MenosClick = 1;
-        DecimalesClick=0;
+        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        jTxFMostrar.setText((""));   // Limpia el texto
+        MenosClick = 1;              //Se Usa para pasar al otro texto
+        DecimalesClick=0;            // Limpia los decimales
     }//GEN-LAST:event_jButtonMenosActionPerformed
 
     private void jBtnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMultiActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        jTxFMostrar.setText((""));
-        MultiplicacionClick = 1;
-        DecimalesClick=0;
+        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        jTxFMostrar.setText((""));    // Limpia el Texto
+        MultiplicacionClick = 1;      // Se usa para pasar al otro texto
+        DecimalesClick=0;             // Limpia los decimales 
     }//GEN-LAST:event_jBtnMultiActionPerformed
 
     private void jButtonDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDividirActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        jTxFMostrar.setText((""));
-        DividirClick = 1;
-        DecimalesClick=0;
+        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        jTxFMostrar.setText((""));    //Limpia el texto
+        DividirClick = 1;             // Se usa para pasar al otro texto 
+        DecimalesClick=0;             // Limpia los decimales   
     }//GEN-LAST:event_jButtonDividirActionPerformed
-
+/**
+ *
+ * Acciones del Boton igual.
+ */
     private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
         // TODO add your handling code here:
-        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
-        if(MasClick > 0 ){
-            Total = PrimerDouble + SegundoDouble;
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        if(MasClick > 0 ){                                // If que le indica que debe sumar
+            Total = PrimerDouble + SegundoDouble;         // Operacion de suma
+            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la suma 
+            PrimerDouble = 0;       // Inicializan las variables 
             SegundoDouble = 0;
             MasClick = 0;
         }
-         if(MenosClick > 0 ){
-            Total = PrimerDouble - SegundoDouble;
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+         if(MenosClick > 0 ){                             // If que indica que debe restar
+            Total = PrimerDouble - SegundoDouble;         // Operacio de la resta 
+            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la resta
+            PrimerDouble = 0;       // Inicializa las variables 
             SegundoDouble = 0;
             MenosClick = 0;
          }
           
-          if(MultiplicacionClick > 0 ){
-            Total = PrimerDouble * SegundoDouble;
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+          if(MultiplicacionClick > 0 ){                   // If que indica que debe multiplicar
+            Total = PrimerDouble * SegundoDouble;         // Operacion de la multiplicacion   
+            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la multiplicacion
+            PrimerDouble = 0;       // Inicializa las variables 
             SegundoDouble = 0;
             MultiplicacionClick = 0;
             
           } 
           
-           if(DividirClick > 0 ){
-            Total = PrimerDouble / SegundoDouble;
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+           if(DividirClick > 0 ){                         // If que indica que debe dividir 
+            Total = PrimerDouble / SegundoDouble;         // Operacion de la divicion
+            jTxFMostrar.setText((String.valueOf(Total))); //Coloca el total de la divicion 
+            PrimerDouble = 0;        // Inicializa las variables 
             SegundoDouble = 0;
             DividirClick = 0;
            }
@@ -562,10 +565,13 @@ public class Calc1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0); // Sale de la aplicacion 
     }//GEN-LAST:event_jButtonSalirActionPerformed
-
+/**
+ *
+ * Acciones del Boton porcentaje.
+ */    
     private void jButtonporcenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonporcenActionPerformed
         // TODO add your handling code here:
-        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));
+        SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
         if(MasClick > 0 ){
             Total = PrimerDouble + (PrimerDouble * SegundoDouble / 100);
             jTxFMostrar.setText((String.valueOf(Total)));
