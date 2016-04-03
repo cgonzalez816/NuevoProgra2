@@ -6,6 +6,8 @@
 package grafico;
 
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Cesar Gonzalez
@@ -24,7 +26,9 @@ public class Calc1 extends javax.swing.JFrame {
     int DividirClick;        // Botton Dividir
     int DecimalesClick;      //Boton para los decimales
     double porcentaje;       //boton para el porcentaje
-    int memoria [];          //lista para las memorias
+    String[] memoria = new String [3];          //lista para las memorias
+     
+    
     /**
      * Creates new form Calc1
      */
@@ -53,8 +57,6 @@ public class Calc1 extends javax.swing.JFrame {
         jButtonDividir = new javax.swing.JButton();
         jButtonIgual = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jBtn4 = new javax.swing.JButton();
         jBtn7 = new javax.swing.JButton();
         jBtn1 = new javax.swing.JButton();
@@ -72,6 +74,7 @@ public class Calc1 extends javax.swing.JFrame {
         jButtonmod = new javax.swing.JButton();
         jBtnDecimal = new javax.swing.JButton();
         jBtnMulti = new javax.swing.JButton();
+        jTxFMemoria = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora Java");
@@ -135,6 +138,11 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButtonBorrarNum.setText("←");
         jButtonBorrarNum.setFocusable(false);
+        jButtonBorrarNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarNumActionPerformed(evt);
+            }
+        });
 
         jButtonLimpiar2.setText("CE");
         jButtonLimpiar2.setFocusable(false);
@@ -162,10 +170,6 @@ public class Calc1 extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
 
         jBtn4.setText("4");
         jBtn4.setFocusable(false);
@@ -233,6 +237,11 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButton7.setText("MC");
         jButton7.setFocusable(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton16.setText("MR");
         jButton16.setFocusable(false);
@@ -275,6 +284,8 @@ public class Calc1 extends javax.swing.JFrame {
                 jBtnMultiActionPerformed(evt);
             }
         });
+
+        jTxFMemoria.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,19 +348,16 @@ public class Calc1 extends javax.swing.JFrame {
                             .addComponent(jButtonMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBtnMulti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jTxFMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxFMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxFMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTxFMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jTxFMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -491,6 +499,7 @@ public class Calc1 extends javax.swing.JFrame {
     private void jButtonMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasActionPerformed
         // TODO add your handling code here:
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0]= String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    // limpia el texto
         MasClick = 1;  // se usa para pasar al otro texto
         DecimalesClick=0; //limpia los decimales 
@@ -500,6 +509,7 @@ public class Calc1 extends javax.swing.JFrame {
     private void jButtonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenosActionPerformed
         // TODO add your handling code here:
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0]= String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));   // Limpia el texto
         MenosClick = 1;              //Se Usa para pasar al otro texto
         DecimalesClick=0;            // Limpia los decimales
@@ -508,6 +518,7 @@ public class Calc1 extends javax.swing.JFrame {
     private void jBtnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMultiActionPerformed
         // TODO add your handling code here:
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0]= String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    // Limpia el Texto
         MultiplicacionClick = 1;      // Se usa para pasar al otro texto
         DecimalesClick=0;             // Limpia los decimales 
@@ -516,6 +527,7 @@ public class Calc1 extends javax.swing.JFrame {
     private void jButtonDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDividirActionPerformed
         // TODO add your handling code here:
         PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0]= String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    //Limpia el texto
         DividirClick = 1;             // Se usa para pasar al otro texto 
         DecimalesClick=0;             // Limpia los decimales   
@@ -526,13 +538,38 @@ public class Calc1 extends javax.swing.JFrame {
  */
     private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
         // TODO add your handling code here:
+                  
         SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
         if(MasClick > 0 ){                                // If que le indica que debe sumar
             Total = PrimerDouble + SegundoDouble;         // Operacion de suma
-            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la suma 
-            PrimerDouble = 0;       // Inicializan las variables 
+            jTxFMostrar.setText((String.valueOf(PrimerDouble+ " + "+ SegundoDouble))); // Coloca el total de la suma 
+            JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
+            jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
+            
+            memoria[1]= String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+            
+            int answer = JOptionPane.showConfirmDialog(      //Variable para el JOption pane 
+            null,
+            " Desea continuar con el valor del resultado?",   // Mensaje si se desea continuarco el resultado de la operacion
+            "An Inane Question",
+            JOptionPane.YES_NO_OPTION);                  
+                if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                                                              // Si se clickea si , no se hace nada 
+    }          else if (answer == JOptionPane.NO_OPTION) {
+                jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
+                DecimalesClick = 0;                          // inicia los decimales a cero 
+    }           
+            if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
+
+            memoria[2]= String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+            jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+         }
+            
+            PrimerDouble = 0;       // Inicializan las variables a cero
             SegundoDouble = 0;
-            MasClick = 0;
+            MasClick = 0;            
+            
+            
         }
          if(MenosClick > 0 ){                             // If que indica que debe restar
             Total = PrimerDouble - SegundoDouble;         // Operacio de la resta 
@@ -610,6 +647,35 @@ public class Calc1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonporcenKeyPressed
 
+    private void jButtonBorrarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarNumActionPerformed
+        // TODO add your handling code here:
+            int Resp = JOptionPane.showConfirmDialog(
+            null,
+            " Desea volver al valor en memoria?",
+            "An Inane Question",
+            JOptionPane.YES_NO_OPTION);
+                if (Resp == JOptionPane.YES_OPTION) {
+               jTxFMostrar.setText(memoria[0]); 
+                    if(MasClick > 0 ){ 
+               jTxFMostrar.setText(memoria[1]); 
+                    }
+    }          else if (Resp == JOptionPane.NO_OPTION) {
+               
+    }
+        
+     jTxFMostrar.setText(memoria[0]);
+     
+    }//GEN-LAST:event_jButtonBorrarNumActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        memoria[2]= ("");
+       jTxFMemoria.setText((String.valueOf(memoria[2]))); 
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -674,8 +740,7 @@ public class Calc1 extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonmod;
     private javax.swing.JButton jButtonporcen;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTxFMemoria;
     private javax.swing.JTextField jTxFMostrar;
     // End of variables declaration//GEN-END:variables
 }
