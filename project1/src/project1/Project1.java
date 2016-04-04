@@ -23,7 +23,7 @@ public class Project1 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Calc1 Calc = new Calc1();
+        Calc1 Calc = new Calc1();  // inicia el frm calc
         Calc.setVisible(true);
         
     

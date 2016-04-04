@@ -8,6 +8,7 @@ package grafico;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cesar Gonzalez
@@ -26,11 +27,10 @@ public class Calc1 extends javax.swing.JFrame {
     int DividirClick;        // Botton Dividir
     int DecimalesClick;      //Boton para los decimales
     double porcentaje;       //boton para el porcentaje
-    String[] memoria = new String [3];          //lista para las memorias
-     
-    
+    String[] memoria = new String[3];          //lista para las memorias
+    String[] memory = new String [3];
     /**
-     * Creates new form Calc1
+     * Crea el  new form Calc1
      */
     public Calc1() {
         initComponents();
@@ -245,15 +245,35 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButton16.setText("MR");
         jButton16.setFocusable(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("MS");
         jButton17.setFocusable(false);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setText("M+");
         jButton18.setFocusable(false);
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton19.setText("M-");
         jButton19.setFocusable(false);
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButtonporcen.setText("%");
         jButtonporcen.setFocusable(false);
@@ -270,6 +290,11 @@ public class Calc1 extends javax.swing.JFrame {
 
         jButtonmod.setText("mod");
         jButtonmod.setFocusable(false);
+        jButtonmod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonmodActionPerformed(evt);
+            }
+        });
 
         jBtnDecimal.setText(".");
         jBtnDecimal.addActionListener(new java.awt.event.ActionListener() {
@@ -414,9 +439,9 @@ public class Calc1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- *
- * Botones y codigo para colocar los valores en el Jtex
- */
+     *
+     * Botones y codigo para colocar los valores en el Jtex
+     */
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
         // TODO add your handling code here:
         jTxFMostrar.setText(jTxFMostrar.getText() + jButton0.getText()); //Coloca el Valor del boton en el jTxFMostrar
@@ -425,7 +450,7 @@ public class Calc1 extends javax.swing.JFrame {
     private void jBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn1ActionPerformed
         // TODO add your handling code here:
         jTxFMostrar.setText(jTxFMostrar.getText() + jBtn1.getText()); //Coloca el Valor del boton en el jTxFMostrar
-       
+
     }//GEN-LAST:event_jBtn1ActionPerformed
 
     private void jBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2ActionPerformed
@@ -475,207 +500,345 @@ public class Calc1 extends javax.swing.JFrame {
     private void jButtonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiar1ActionPerformed
         // TODO add your handling code here:
         jTxFMostrar.setText(""); // Limpia el jTxFMostrar
-        DecimalesClick = 0;
+        DecimalesClick = 0;      // iguala los decimales a cero 
     }//GEN-LAST:event_jButtonLimpiar1ActionPerformed
-/**
- *
- * Botones y codigo para las operaciones basicas
- */
+    /**
+     *
+     * Botones y codigo para las operaciones basicas
+     */
     private void jBtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDecimalActionPerformed
         // TODO add your handling code here:
-       if(DecimalesClick==0){  // if que limita que solo se ponga una vez el punto de decimal 
-        jTxFMostrar.setText(jTxFMostrar.getText() + jBtnDecimal.getText()); //Coloca el Valor del boton en el jTxFMostrar
-        DecimalesClick = 1;   // si Decimal click = 1 , no permite mas puntos 
+        if (DecimalesClick == 0) {  // if que limita que solo se ponga una vez el punto de decimal 
+            jTxFMostrar.setText(jTxFMostrar.getText() + jBtnDecimal.getText()); //Coloca el Valor del boton en el jTxFMostrar
+            DecimalesClick = 1;   // si Decimal click = 1 , no permite mas puntos 
         }
     }//GEN-LAST:event_jBtnDecimalActionPerformed
 
     private void jBtnMasMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasMenosActionPerformed
         // TODO add your handling code here:
-        Masmenos = (Double.parseDouble(String.valueOf(jTxFMostrar))  );//muestra el signo negativo 
-        Masmenos = Masmenos*(-1);       // Multiplica lo que esta en la variable por -1 para cambiarle el signo
-        jTxFMostrar.setText(String.valueOf(Masmenos));  // muestra el valor 
+        double numero = -1;
+        double numero2;
+        Masmenos = (Double.parseDouble(String.valueOf(jTxFMostrar)));//muestra el signo negativo 
+        numero2 = Masmenos * numero;       // Multiplica lo que esta en la variable por -1 para cambiarle el signo
+        jTxFMostrar.setText(String.valueOf(numero2 ));  // muestra el valor 
     }//GEN-LAST:event_jBtnMasMenosActionPerformed
 
     private void jButtonMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
-        memoria[0]= String.valueOf(PrimerDouble);
+        PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0] = String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    // limpia el texto
         MasClick = 1;  // se usa para pasar al otro texto
-        DecimalesClick=0; //limpia los decimales 
-        
+        DecimalesClick = 0; //limpia los decimales 
+
     }//GEN-LAST:event_jButtonMasActionPerformed
 
     private void jButtonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenosActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
-        memoria[0]= String.valueOf(PrimerDouble);
+        PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0] = String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));   // Limpia el texto
         MenosClick = 1;              //Se Usa para pasar al otro texto
-        DecimalesClick=0;            // Limpia los decimales
+        DecimalesClick = 0;            // Limpia los decimales
     }//GEN-LAST:event_jButtonMenosActionPerformed
 
     private void jBtnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMultiActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
-        memoria[0]= String.valueOf(PrimerDouble);
+        PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0] = String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    // Limpia el Texto
         MultiplicacionClick = 1;      // Se usa para pasar al otro texto
-        DecimalesClick=0;             // Limpia los decimales 
+        DecimalesClick = 0;             // Limpia los decimales 
     }//GEN-LAST:event_jBtnMultiActionPerformed
 
     private void jButtonDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDividirActionPerformed
         // TODO add your handling code here:
-        PrimerDouble=(Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
-        memoria[0]= String.valueOf(PrimerDouble);
+        PrimerDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
+        memoria[0] = String.valueOf(PrimerDouble);
         jTxFMostrar.setText((""));    //Limpia el texto
         DividirClick = 1;             // Se usa para pasar al otro texto 
-        DecimalesClick=0;             // Limpia los decimales   
+        DecimalesClick = 0;             // Limpia los decimales   
     }//GEN-LAST:event_jButtonDividirActionPerformed
-/**
- *
- * Acciones del Boton igual.
- */
+    /**
+     *
+     * Acciones del Boton igual.
+     */
     private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
         // TODO add your handling code here:
-                  
+
         SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText())));  // toma lo que esta en el texto y lo guarda en la variable
-        if(MasClick > 0 ){                                // If que le indica que debe sumar
+        if (MasClick > 0) {                                // If que le indica que debe sumar
             Total = PrimerDouble + SegundoDouble;         // Operacion de suma
-            jTxFMostrar.setText((String.valueOf(PrimerDouble+ " + "+ SegundoDouble))); // Coloca el total de la suma 
+            jTxFMostrar.setText((String.valueOf(PrimerDouble + " + " + SegundoDouble))); // Coloca el total de la suma 
             JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
             jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
-            
-            memoria[1]= String.valueOf(SegundoDouble);     // memoria del SegundoDouble
-            
-            int answer = JOptionPane.showConfirmDialog(      //Variable para el JOption pane 
-            null,
-            " Desea continuar con el valor del resultado?",   // Mensaje si se desea continuarco el resultado de la operacion
-            "An Inane Question",
-            JOptionPane.YES_NO_OPTION);                  
-                if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
-                                                              // Si se clickea si , no se hace nada 
-    }          else if (answer == JOptionPane.NO_OPTION) {
+
+            memoria[1] = String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+
+            int answer = JOptionPane.showConfirmDialog( //Variable para el JOption pane 
+                    null,
+                    " Desea continuar con el valor del resultado?", // Mensaje si se desea continuarco el resultado de la operacion
+                    "An Inane Question",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                // Si se clickea si , no se hace nada 
+            } else if (answer == JOptionPane.NO_OPTION) {
                 jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
                 DecimalesClick = 0;                          // inicia los decimales a cero 
-    }           
+            }
             if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
 
-            memoria[2]= String.valueOf(Total);               // se le da el valor del resultado al string memoria 
-            jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
-         }
-            
+                memoria[2] = String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+                jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+            }
+
             PrimerDouble = 0;       // Inicializan las variables a cero
             SegundoDouble = 0;
-            MasClick = 0;            
-            
-            
+            MasClick = 0;
+
         }
-         if(MenosClick > 0 ){                             // If que indica que debe restar
-            Total = PrimerDouble - SegundoDouble;         // Operacio de la resta 
-            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la resta
-            PrimerDouble = 0;       // Inicializa las variables 
+        if (MenosClick > 0) {                                // If que le indica que debe restar
+            Total = PrimerDouble - SegundoDouble;         // Operacion de resta
+            jTxFMostrar.setText((String.valueOf(PrimerDouble + " + " + SegundoDouble))); // Coloca el total de la suma 
+            JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
+            jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
+
+            memoria[1] = String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+
+            int answer = JOptionPane.showConfirmDialog( //Variable para el JOption pane 
+                    null,
+                    " Desea continuar con el valor del resultado?", // Mensaje si se desea continuarco el resultado de la operacion
+                    "An Inane Question",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                // Si se clickea si , no se hace nada 
+            } else if (answer == JOptionPane.NO_OPTION) {
+                jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
+                DecimalesClick = 0;                          // inicia los decimales a cero 
+            }
+            if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
+
+                memoria[2] = String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+                jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+            }
+
+            PrimerDouble = 0;       // Inicializan las variables a cero
             SegundoDouble = 0;
             MenosClick = 0;
-         }
-          
-          if(MultiplicacionClick > 0 ){                   // If que indica que debe multiplicar
-            Total = PrimerDouble * SegundoDouble;         // Operacion de la multiplicacion   
-            jTxFMostrar.setText((String.valueOf(Total))); // Coloca el total de la multiplicacion
-            PrimerDouble = 0;       // Inicializa las variables 
+        }
+
+        if (MultiplicacionClick > 0) {                                // If que le indica que debe multiplicar
+            Total = PrimerDouble * SegundoDouble;         // Operacion de multiplicacion 
+            jTxFMostrar.setText((String.valueOf(PrimerDouble + " + " + SegundoDouble))); // Coloca el total de la suma 
+            JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
+            jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
+
+            memoria[1] = String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+
+            int answer = JOptionPane.showConfirmDialog( //Variable para el JOption pane 
+                    null,
+                    " Desea continuar con el valor del resultado?", // Mensaje si se desea continuarco el resultado de la operacion
+                    "An Inane Question",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                // Si se clickea si , no se hace nada 
+            } else if (answer == JOptionPane.NO_OPTION) {
+                jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
+                DecimalesClick = 0;                          // inicia los decimales a cero 
+            }
+            if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
+
+                memoria[2] = String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+                jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+            }
+
+            PrimerDouble = 0;       // Inicializan las variables a cero
             SegundoDouble = 0;
             MultiplicacionClick = 0;
-            
-          } 
-          
-           if(DividirClick > 0 ){                         // If que indica que debe dividir 
-            Total = PrimerDouble / SegundoDouble;         // Operacion de la divicion
-            jTxFMostrar.setText((String.valueOf(Total))); //Coloca el total de la divicion 
-            PrimerDouble = 0;        // Inicializa las variables 
+
+        }
+
+        if (DividirClick > 0) {                                // If que le indica que debe dividir
+            Total = PrimerDouble / SegundoDouble;         // Operacion de divicion
+            jTxFMostrar.setText((String.valueOf(PrimerDouble + " + " + SegundoDouble))); // Coloca el total de la divicion 
+            JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
+            jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
+
+            memoria[1] = String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+
+            int answer = JOptionPane.showConfirmDialog( //Variable para el JOption pane 
+                    null,
+                    " Desea continuar con el valor del resultado?", // Mensaje si se desea continuarco el resultado de la operacion
+                    "An Inane Question",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                // Si se clickea si , no se hace nada 
+            } else if (answer == JOptionPane.NO_OPTION) {
+                jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
+                DecimalesClick = 0;                          // inicia los decimales a cero 
+            }
+            if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
+
+                memoria[2] = String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+                jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+            }
+
+            PrimerDouble = 0;       // Inicializan las variables a cero
             SegundoDouble = 0;
             DividirClick = 0;
-           }
-            
+        }
+
     }//GEN-LAST:event_jButtonIgualActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0); // Sale de la aplicacion 
     }//GEN-LAST:event_jButtonSalirActionPerformed
-/**
- *
- * Acciones del Boton porcentaje.
- */    
+    /**
+     *
+     * Acciones del Boton porcentaje.
+     */
     private void jButtonporcenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonporcenActionPerformed
         // TODO add your handling code here:
         SegundoDouble = (Double.parseDouble(String.valueOf(jTxFMostrar.getText()))); // toma lo que esta en el texto y lo guarda en la variable
-        if(MasClick > 0 ){
-            Total = PrimerDouble + (PrimerDouble * SegundoDouble / 100);
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+        if (MasClick > 0) {                                                   // if de la suma
+            Total = PrimerDouble + (PrimerDouble * SegundoDouble / 100);      // hace la operacion     
+            jTxFMostrar.setText((String.valueOf(Total)));                     // Muestra el total de la operacion
+            PrimerDouble = 0;            // iguala las variables a cero 
             SegundoDouble = 0;
             MasClick = 0;
         }
-         if(MenosClick > 0 ){
-            Total = PrimerDouble - (PrimerDouble * SegundoDouble / 100);
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+        if (MenosClick > 0) {                                                // If de la resta 
+            Total = PrimerDouble - (PrimerDouble * SegundoDouble / 100);    // Hace la operacion
+            jTxFMostrar.setText((String.valueOf(Total)));                   // Muestra el total 
+            PrimerDouble = 0;              // Iguala las variables a cero  
             SegundoDouble = 0;
             MenosClick = 0;
-         }
-          
-          if(MultiplicacionClick > 0 ){
-            Total = PrimerDouble * SegundoDouble;
-            porcentaje = Total /100;
-            jTxFMostrar.setText((String.valueOf(porcentaje)));
-            PrimerDouble = 0;
+        }
+
+        if (MultiplicacionClick > 0) {                                      // If de la multiplicacion
+            Total = PrimerDouble * SegundoDouble;                           // Hace la operacion 
+            porcentaje = Total / 100;                                       // Hace la operacion 
+            jTxFMostrar.setText((String.valueOf(porcentaje)));              // Muestra el resultado 
+            PrimerDouble = 0;               // Iguala las variables a cero 
             SegundoDouble = 0;
             MultiplicacionClick = 0;
-            
-          } 
-          
-           if(DividirClick > 0 ){
-            Total = PrimerDouble / (PrimerDouble * SegundoDouble / 100);
-            jTxFMostrar.setText((String.valueOf(Total)));
-            PrimerDouble = 0;
+
+        }
+
+        if (DividirClick > 0) {                                             // If de la divicion 
+            Total = PrimerDouble / (PrimerDouble * SegundoDouble / 100);    // Hace la operacion   
+            jTxFMostrar.setText((String.valueOf(Total)));                   // Muestra el Total 
+            PrimerDouble = 0;               // Iguala las variables a cero 
             SegundoDouble = 0;
             DividirClick = 0;
-           }
+        }
     }//GEN-LAST:event_jButtonporcenActionPerformed
 
     private void jButtonporcenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonporcenKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonporcenKeyPressed
-
+    /**
+     *
+     * Accio del Boton Borrar 
+     */
     private void jButtonBorrarNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarNumActionPerformed
         // TODO add your handling code here:
-            int Resp = JOptionPane.showConfirmDialog(
-            null,
-            " Desea volver al valor en memoria?",
-            "An Inane Question",
-            JOptionPane.YES_NO_OPTION);
-                if (Resp == JOptionPane.YES_OPTION) {
-               jTxFMostrar.setText(memoria[0]); 
-                    if(MasClick > 0 ){ 
-               jTxFMostrar.setText(memoria[1]); 
-                    }
-    }          else if (Resp == JOptionPane.NO_OPTION) {
-               
-    }
-        
-     jTxFMostrar.setText(memoria[0]);
-     
+        int Resp = JOptionPane.showConfirmDialog(  // Variable para el JOptionPane 
+                null,
+                " Desea volver al valor en memoria?", // Mensaje del JOptionpane
+                "An Inane Question",       
+                JOptionPane.YES_NO_OPTION);          // JoptionPane yes or no 
+        if (Resp == JOptionPane.YES_OPTION) {         // Si la resp es yes muestra la memoria 0
+            jTxFMostrar.setText(memoria[0]);          // guarda la info del JTxFMostrar
+            if (MasClick > 0) {                       
+                jTxFMostrar.setText(memoria[1]);       // muestra la memoria 1
+            }
+        } else if (Resp == JOptionPane.NO_OPTION) {    // si la resp es no , no hace nada    
+
+        }
+
+        jTxFMostrar.setText(memoria[0]);            // muestra la info de la menmoria 0
+
     }//GEN-LAST:event_jButtonBorrarNumActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        memoria[2]= ("");
-       jTxFMemoria.setText((String.valueOf(memoria[2]))); 
-        
+        memoria[2] = ("");
+        jTxFMemoria.setText((String.valueOf(memoria[2])));
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    
-    
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+        jTxFMostrar.setText((String.valueOf(PrimerDouble+memoria[2])));
+        
+        
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        
+        //(Double.parseDouble(String.valueOf
+        double N;
+        N= (PrimerDouble-Double.parseDouble(memoria[2]));
+        jTxFMostrar.setText((String.valueOf(N)));
+        
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        memory[0] = String.valueOf(jTxFMostrar);
+        JOptionPane.showMessageDialog(null, " Numero Guardado");
+        
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+               int Resp = JOptionPane.showConfirmDialog(  // Variable para el JOptionPane 
+                null,
+                " Desea Tomar el valor de la memoria?", // Mensaje del JOptionpane
+                " Question",       
+                JOptionPane.YES_NO_OPTION);          // JoptionPane yes or no 
+        if (Resp == JOptionPane.YES_OPTION) {         // Si la resp es yes muestra la memoria 0
+           jTxFMostrar.setText((String.valueOf(memory[0])));         // guarda la info del JTxFMostrar
+           
+        } else if (Resp == JOptionPane.NO_OPTION) {    // si la resp es no , no hace nada    
+
+        }
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButtonmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonmodActionPerformed
+        // TODO add your handling code here:
+         Total = PrimerDouble / SegundoDouble;         // Operacion de divicion
+            jTxFMostrar.setText((String.valueOf(PrimerDouble + " + " + SegundoDouble))); // Coloca el total de la divicion 
+            JOptionPane.showMessageDialog(jButtonporcen, Total, null, WIDTH);  // JoptionPane con el resultado 
+            jTxFMostrar.setText((String.valueOf(Total)));    // Muestra el total en el JTxFMostrar
+
+            memoria[1] = String.valueOf(SegundoDouble);     // memoria del SegundoDouble
+
+            int answer = JOptionPane.showConfirmDialog( //Variable para el JOption pane 
+                    null,
+                    " Desea continuar con el valor del resultado?", // Mensaje si se desea continuarco el resultado de la operacion
+                    "An Inane Question",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {       // If JOption pane
+                // Si se clickea si , no se hace nada 
+            } else if (answer == JOptionPane.NO_OPTION) {
+                jTxFMostrar.setText("");                      // si se clickea no, Limpia el jTxFMostrar
+                DecimalesClick = 0;                          // inicia los decimales a cero 
+            }
+            if (answer == JOptionPane.YES_OPTION) {          // If que guarda elresultado en la memoria    
+
+                memoria[2] = String.valueOf(Total);               // se le da el valor del resultado al string memoria 
+                jTxFMemoria.setText((String.valueOf(memoria[2]))); // muestra el vaor de memoria en el jTxFMemoria
+            }
+
+            PrimerDouble = 0;       // Inicializan las variables a cero
+            SegundoDouble = 0;
+            DividirClick = 0;
+    }//GEN-LAST:event_jButtonmodActionPerformed
+
     /**
      * @param args the command line arguments
      */
